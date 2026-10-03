@@ -46,11 +46,11 @@ public class StudentController {
 
     @PutMapping("/{studentId}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long studentId,
-                                                 @ResponseBody Student studentReq){
+                                                 @RequestBody Student studentReq){
 
         Student updatedStudent = studentService.updateStudent(studentId, studentReq);
 
-        if(student == null){
+        if(updatedStudent == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         return ResponseEntity.status(HttpStatus.OK).body(updatedStudent);
